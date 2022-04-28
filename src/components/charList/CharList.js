@@ -7,12 +7,10 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import {Component} from 'react'; 
 
 class CharList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            charList: [],
-            loading: true,
-        }
+    
+    state = {
+        charList: [],
+        loading: true,
     }
 
     marvelService = new MarvelService();
@@ -48,6 +46,7 @@ class CharList extends Component {
 
             return (
                 <li 
+                    onClick={() => this.props.onCharSelected(item.id)}
                     className="char__item"
                     key={item.id}>
                         <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
